@@ -1,4 +1,4 @@
-package com.taro.linkedlist;
+package com.taro;
 
 public class Node {
 

@@ -1,5 +1,7 @@
 package com.taro.linkedlist;
 
+import com.taro.Node;
+
 /**
  * A basic linked list which supports the following operations:
  * 

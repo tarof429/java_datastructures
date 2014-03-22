@@ -1,8 +1,11 @@
-package com.taro.linkedlist;
+package com.taro;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
+
+import com.taro.Node;
+import com.taro.linkedlist.LinkedList;
 
 public class LinkedListTest {
 
