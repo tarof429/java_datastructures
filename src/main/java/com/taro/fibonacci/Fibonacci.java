@@ -2,12 +2,12 @@ package com.taro.fibonacci;
 
 public class Fibonacci {
 
-	public static int fib(int n) {
+	public static int fibInt(int n) {
 		if (n == 0)
 			return 0;
 		if (n == 1)
 			return 1;
 
-		return (fib(n - 1) + fib(n - 2));
+		return (fibInt(n - 1) + fibInt(n - 2));
 	}
 }
