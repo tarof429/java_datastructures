@@ -2,6 +2,8 @@ package com.taro;
 
 import org.junit.Test;
 
+import com.taro.linkedlist.LinkedList;
+
 public class RecursionTest {
 
 	@Test
@@ -21,7 +23,15 @@ public class RecursionTest {
 
 		// swapRecursive("friends");
 
-		countRecursive("chocolate", "o");
+		// countRecursive("chocolate", "o");
+
+		LinkedList list = new LinkedList();
+		list.add(new Node(new Integer(1)));
+		list.add(new Node(new Integer(2)));
+		list.add(new Node(new Integer(5)));
+		list.add(new Node(new Integer(3)));
+		System.out.println(sumLinkedList(list.getFirst()));
+
 	}
 
 	public static int mystery(int a, int b) {
@@ -131,5 +141,13 @@ public class RecursionTest {
 
 			return counter;
 		}
+	}
+
+	public int sumLinkedList(Node node) {
+
+		if (node == null) {
+			return 0;
+		}
+		return (Integer) node.getValue() + sumLinkedList(node.getNext());
 	}
 }
