@@ -2,7 +2,7 @@ package com.taro;
 
 import org.junit.Test;
 
-public class MysteryTest {
+public class RecursionTest {
 
 	@Test
 	public void testMystery() {
