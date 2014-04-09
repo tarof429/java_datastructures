@@ -26,6 +26,14 @@ public class CodingBatTest {
 		Assert.assertTrue(makes10(9, 10));
 		Assert.assertFalse(makes10(9, 9));
 		Assert.assertTrue(makes10(1, 9));
+
+		Assert.assertTrue(parrotTrouble(true, 6));
+		Assert.assertFalse(parrotTrouble(true, 7));
+		Assert.assertFalse(parrotTrouble(false, 6));
+
+		Assert.assertTrue(monkeyTrouble(true, true));
+		Assert.assertTrue(monkeyTrouble(false, false));
+		Assert.assertFalse(monkeyTrouble(true, false));
 	}
 
 	@Test
@@ -64,10 +72,28 @@ public class CodingBatTest {
 		Assert.assertFalse(commonEnd(new int[] { 1, 2, 3 },
 				new int[] { 7, 3, 2 }));
 		Assert.assertTrue(commonEnd(new int[] { 1, 2, 3 }, new int[] { 1, 3 }));
+
+		Assert.assertArrayEquals(new int[] { 2, 3, 1 }, rotateLeft3(new int[] {
+				1, 2, 3 }));
+		Assert.assertArrayEquals(new int[] { 11, 9, 5 }, rotateLeft3(new int[] {
+				5, 11, 9 }));
+		Assert.assertArrayEquals(new int[] { 0, 0, 7 }, rotateLeft3(new int[] {
+				7, 0, 0 }));
+
+		Assert.assertArrayEquals(new int[] { 3, 3, 3 }, maxEnd3(new int[] { 1,
+				2, 3 }));
+		Assert.assertArrayEquals(new int[] { 11, 11, 11 }, maxEnd3(new int[] {
+				11, 5, 9 }));
+		Assert.assertArrayEquals(new int[] { 3, 3, 3 }, maxEnd3(new int[] { 2,
+				11, 3 }));
+
+		Assert.assertEquals(3, sum2(new int[] { 1, 2, 3 }));
+		Assert.assertEquals(2, sum2(new int[] { 1, 1 }));
+		Assert.assertEquals(2, sum2(new int[] { 1, 1, 1, 1 }));
 	}
 
 	@Test
-	public void testSttring1() {
+	public void testString1() {
 		Assert.assertEquals("and", middleThree("Candy"));
 		Assert.assertEquals("and", middleThree("and"));
 		Assert.assertEquals("lvi", middleThree("solving"));
@@ -176,6 +202,19 @@ public class CodingBatTest {
 
 	}
 
+	public boolean parrotTrouble(boolean talking, int hour) {
+		if (talking) {
+			if (hour < 7 || hour > 20) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
+		return (aSmile == bSmile);
+	}
+
 	// //////////////////////// String-1 //////////////////////
 	static boolean endsLy(String str) {
 
@@ -276,6 +315,43 @@ public class CodingBatTest {
 			return true;
 		}
 		return false;
+	}
+
+	public int[] rotateLeft3(int[] nums) {
+
+		int[] ret = new int[3];
+
+		ret[0] = nums[1];
+		ret[1] = nums[2];
+		ret[2] = nums[0];
+
+		return ret;
+	}
+
+	public int[] maxEnd3(int[] nums) {
+
+		int max = nums[0] > nums[nums.length - 1] ? nums[0]
+				: nums[nums.length - 1];
+
+		int[] ret = new int[3];
+
+		Arrays.fill(ret, max);
+
+		return ret;
+	}
+
+	public int sum2(int[] nums) {
+		if (nums.length == 0) {
+			return 0;
+		}
+
+		else if (nums.length == 1) {
+			return nums[0];
+		}
+
+		else {
+			return nums[0] + nums[1];
+		}
 	}
 
 	// //////////////////////// Logic-1 //////////////////////
