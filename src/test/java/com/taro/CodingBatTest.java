@@ -54,14 +54,34 @@ public class CodingBatTest {
 		Assert.assertEquals("JavJavJav", front3("Java"));
 		Assert.assertEquals("ChoChoCho", front3("Chocolate"));
 		Assert.assertEquals("abcabcabc", front3("abc"));
+
+		Assert.assertEquals("kikittenki", front22("kitten"));
+		Assert.assertEquals("HaHaHa", front22("Ha"));
+		Assert.assertEquals("ababcab", front22("abc"));
 	}
 
 	@Test
 	public void testWarmup2() {
 
+		Assert.assertEquals("HiHi", stringTimes("Hi", 2));
+		Assert.assertEquals("HiHiHi", stringTimes("Hi", 3));
+		Assert.assertEquals("Hi", stringTimes("Hi", 1));
+
 		Assert.assertEquals("ChoCho", frontTimes("Chocolate", 2));
 		Assert.assertEquals("ChoChoCho", frontTimes("Chocolate", 3));
 		Assert.assertEquals("AbcAbcAbc", frontTimes("Abc", 3));
+
+		Assert.assertEquals(1, countXX("abcxx"));
+		Assert.assertEquals(2, countXX("xxx"));
+		Assert.assertEquals(3, countXX("xxxx"));
+
+		Assert.assertTrue(doubleX("axxbb"));
+		Assert.assertFalse(doubleX("axaxax"));
+		Assert.assertTrue(doubleX("xxxxx"));
+
+		Assert.assertEquals("Hlo", stringBits("Hello"));
+		Assert.assertEquals("H", stringBits("Hi"));
+		Assert.assertEquals("Hello", stringBits("Heeololeo"));
 	}
 
 	@Test
@@ -291,6 +311,18 @@ public class CodingBatTest {
 		String s = str.substring(0, 3);
 
 		return s + s + s;
+	}
+
+	public String front22(String str) {
+		String s = "";
+
+		if (str.length() < 2) {
+			s = str;
+		} else {
+			s = str.substring(0, 2);
+		}
+
+		return s + str + s;
 	}
 
 	// //////////////////////// String-1 //////////////////////
@@ -528,6 +560,16 @@ public class CodingBatTest {
 	}
 
 	// //////////////////////// Warmup-2 //////////////////////
+
+	public String stringTimes(String str, int n) {
+		String s = "";
+
+		for (int i = 0; i < n; i++) {
+			s += str;
+		}
+		return s;
+	}
+
 	public String frontTimes(String str, int n) {
 		int length = str.length();
 
@@ -539,6 +581,57 @@ public class CodingBatTest {
 			ret += s;
 		}
 		return ret;
+	}
+
+	int countXX(String str) {
+
+		int counter = 0;
+
+		if (str.length() <= 1) {
+			return counter;
+		}
+
+		char[] c = str.toCharArray();
+
+		for (int i = 0; i < c.length - 1; i++) {
+			if (str.substring(i, i + 2).equals("xx")) {
+				counter++;
+			}
+		}
+
+		return counter;
+	}
+
+	boolean doubleX(String str) {
+		if (str.length() < 2) {
+			return false;
+		}
+
+		int index = str.indexOf('x');
+
+		if (index == str.length() - 1) {
+			return false;
+		}
+
+		return str.charAt(index + 1) == 'x';
+	}
+
+	public String stringBits(String str) {
+		if (str.length() < 1) {
+			return str;
+		} else if (str.length() == 2) {
+			return str.substring(0, 1);
+		} else {
+			char[] c = str.toCharArray();
+
+			String s = "";
+
+			for (int i = 0; i < c.length; i += 2) {
+				s += c[i];
+			}
+
+			return s;
+		}
 	}
 
 }
