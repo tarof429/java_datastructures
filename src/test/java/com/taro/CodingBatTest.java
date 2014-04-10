@@ -34,6 +34,26 @@ public class CodingBatTest {
 		Assert.assertTrue(monkeyTrouble(true, true));
 		Assert.assertTrue(monkeyTrouble(false, false));
 		Assert.assertFalse(monkeyTrouble(true, false));
+
+		Assert.assertTrue(posNeg(1, -1, false));
+		Assert.assertTrue(posNeg(-1, 1, false));
+		Assert.assertTrue(posNeg(-4, -5, true));
+
+		Assert.assertEquals("not candy", notString("candy"));
+		Assert.assertEquals("not x", notString("x"));
+		Assert.assertEquals("not bad", notString("not bad"));
+
+		Assert.assertEquals("eodc", frontBack("code"));
+		Assert.assertEquals("a", frontBack("a"));
+		Assert.assertEquals("ba", frontBack("ab"));
+
+		Assert.assertTrue(or35(3));
+		Assert.assertTrue(or35(10));
+		Assert.assertFalse(or35(8));
+
+		Assert.assertEquals("JavJavJav", front3("Java"));
+		Assert.assertEquals("ChoChoCho", front3("Chocolate"));
+		Assert.assertEquals("abcabcabc", front3("abc"));
 	}
 
 	@Test
@@ -153,6 +173,18 @@ public class CodingBatTest {
 		Assert.assertEquals(7, sortaSum(3, 4));
 		Assert.assertEquals(20, sortaSum(9, 4));
 		Assert.assertEquals(21, sortaSum(10, 11));
+
+		Assert.assertTrue(in1To10(5, false));
+		Assert.assertFalse(in1To10(11, false));
+		Assert.assertTrue(in1To10(11, true));
+
+		Assert.assertEquals("7:00", alarmClock(1, false));
+		Assert.assertEquals("7:00", alarmClock(5, false));
+		Assert.assertEquals("10:00", alarmClock(0, false));
+
+		Assert.assertTrue(specialEleven(22));
+		Assert.assertTrue(specialEleven(23));
+		Assert.assertFalse(specialEleven(24));
 	}
 
 	// //////////////////////// Warmup-1 //////////////////////
@@ -213,6 +245,52 @@ public class CodingBatTest {
 
 	public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
 		return (aSmile == bSmile);
+	}
+
+	public boolean posNeg(int a, int b, boolean negative) {
+		if (negative) {
+			return a < 0 && b < 0;
+		} else {
+			return a > 0 && b < 0 || b > 0 && a < 0;
+		}
+	}
+
+	public String notString(String str) {
+		if (str.length() >= 3) {
+			if (str.substring(0, 3).equals("not")) {
+				return str;
+			} else {
+				return "not " + str;
+			}
+		} else {
+			return "not " + str;
+		}
+	}
+
+	public String frontBack(String str) {
+		if (str.length() <= 1) {
+			return str;
+		}
+
+		char first = str.charAt(0);
+		char last = str.charAt(str.length() - 1);
+		String middle = str.substring(1, str.length() - 1);
+
+		return last + middle + first;
+
+	}
+
+	public boolean or35(int n) {
+		return n % 3 == 0 || n % 5 == 0;
+	}
+
+	public String front3(String str) {
+		if (str.length() < 3) {
+			return str + str + str;
+		}
+		String s = str.substring(0, 3);
+
+		return s + s + s;
 	}
 
 	// //////////////////////// String-1 //////////////////////
@@ -419,6 +497,34 @@ public class CodingBatTest {
 			return 20;
 		}
 		return sum;
+	}
+
+	public boolean in1To10(int n, boolean outsideMode) {
+		if (outsideMode) {
+			return n <= 1 || n >= 10;
+		} else {
+			return n >= 1 && n <= 10;
+		}
+	}
+
+	public String alarmClock(int day, boolean vacation) {
+		if (vacation) {
+			if (day == 0 || day == 6) {
+				return "off";
+			} else {
+				return "10:00";
+			}
+		} else {
+			if (day == 0 || day == 6) {
+				return "10:00";
+			} else {
+				return "7:00";
+			}
+		}
+	}
+
+	public boolean specialEleven(int n) {
+		return (n % 11 == 0 || (n - 1) % 11 == 0);
 	}
 
 	// //////////////////////// Warmup-2 //////////////////////
