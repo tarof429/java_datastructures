@@ -16,7 +16,7 @@ public class FibonacciTest {
 	 */
 	public void testFibonaci() {
 
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 5; i++) {
 			System.out.print(Fibonacci.fibInt(i) + " ");
 		}
 

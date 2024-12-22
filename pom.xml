@@ -4,9 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.taro</groupId>
-	<artifactId>blackboard</artifactId>
-	<name>Blackboard</name>
-	<description>A blackboard to explore algorithms, design patterns and frameworks.</description>
+	<artifactId>datastructures</artifactId>
+	<name>Datastructes</name>
+	<description>A project that explores algorithms, design patterns and frameworks.</description>
 	<version>1.0.0-SNAPSHOT</version>
 
 	<licenses>
@@ -18,11 +18,17 @@
 	</licenses>
 	
 	<dependencies>
+	 <dependency>
+	   <groupId>commons-io</groupId>
+	   <artifactId>commons-io</artifactId>
+	   <version>2.18.0</version>
+	 </dependency>
+		
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.8.1</version>
+			<version>4.13</version>
 			<scope>test</scope>
 		</dependency>
 		
@@ -35,7 +41,7 @@
 	        <plugin>
 	          <groupId>org.apache.maven.plugins</groupId>
 	          <artifactId>maven-surefire-plugin</artifactId>
-	          <version>2.17</version>
+	          <version>3.5.2</version>
 	        </plugin>
 	      </plugins>
     	</pluginManagement>

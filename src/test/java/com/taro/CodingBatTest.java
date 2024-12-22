@@ -82,6 +82,18 @@ public class CodingBatTest {
 		Assert.assertEquals("Hlo", stringBits("Hello"));
 		Assert.assertEquals("H", stringBits("Hi"));
 		Assert.assertEquals("Hello", stringBits("Heeololeo"));
+
+		Assert.assertEquals(1, arrayCount9(new int[] { 1, 2, 9 }));
+		Assert.assertEquals(2, arrayCount9(new int[] { 1, 9, 9 }));
+		Assert.assertEquals(3, arrayCount9(new int[] { 1, 9, 9, 9 }));
+
+		Assert.assertTrue(array123(new int[] { 1, 1, 2, 3, 1 }));
+		Assert.assertFalse(array123(new int[] { 1, 1, 2, 4, 1 }));
+		Assert.assertTrue(array123(new int[] { 1, 1, 2, 1, 2, 3 }));
+
+		Assert.assertEquals(1, array667(new int[] { 6, 6, 2 }));
+		Assert.assertEquals(1, array667(new int[] { 6, 6, 2, 6 }));
+		Assert.assertEquals(1, array667(new int[] { 6, 7, 2, 6 }));
 	}
 
 	@Test
@@ -165,6 +177,10 @@ public class CodingBatTest {
 		Assert.assertEquals("<i>Yay</i>", makeTags("i", "Yay"));
 		Assert.assertEquals("<i>Hello</i>", makeTags("i", "Hello"));
 		Assert.assertEquals("<cite>Yay</cite>", makeTags("cite", "Yay"));
+
+		Assert.assertEquals("He", firstTwo("Hello"));
+		Assert.assertEquals("ab", firstTwo("abcdefg"));
+		Assert.assertEquals("ab", firstTwo("ab"));
 	}
 
 	@Test
@@ -371,6 +387,14 @@ public class CodingBatTest {
 
 	public String makeTags(String tag, String word) {
 		return "<" + tag + ">" + word + "</" + tag + ">";
+	}
+
+	public String firstTwo(String str) {
+		if (str.length() < 2) {
+			return str;
+		}
+
+		return str.substring(0, 2);
 	}
 
 	// //////////////////////// Array-1 //////////////////////
@@ -632,6 +656,55 @@ public class CodingBatTest {
 
 			return s;
 		}
+	}
+
+	public int arrayCount9(int[] nums) {
+		int counter = 0;
+
+		for (int i = 0; i < nums.length; i++) {
+			if (nums[i] == 9) {
+				counter++;
+			}
+		}
+		return counter;
+	}
+
+	public boolean arrayFront9(int[] nums) {
+		for (int i = 0; i < nums.length && i < 4; i++) {
+			if (nums[i] == 9) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean array123(int[] nums) {
+		if (nums.length < 3) {
+			return false;
+		}
+
+		for (int i = 0; i + 3 <= nums.length; i++) {
+			if (nums[i] == 1 && nums[i + 1] == 2 && nums[i + 2] == 3) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public int array667(int[] nums) {
+		if (nums.length < 2) {
+			return 0;
+		}
+
+		int counter = 0;
+
+		for (int i = 0; i < nums.length - 1; i++) {
+			if ((nums[i] == 6 && nums[i + 1] == 6)
+					|| (nums[i] == 6 && nums[i + 1] == 7)) {
+				counter++;
+			}
+		}
+		return counter;
 	}
 
 }
